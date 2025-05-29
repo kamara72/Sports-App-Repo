@@ -1,0 +1,140 @@
+﻿@model NationalCountyMeet.Web.Models.MatchOfficial
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "_SubLayout";
+}
+
+<div class="card">
+<div class="container-fluid dashboard-content">
+    <div class="row">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+            <h2 class="text-primary text-uppercase mb-3">Match official Profile</h2>
+            <form>
+                <div class="row">
+                    <div class="col-md-4">
+                        <dl class="row">
+                            <dt class="col-sm-4">
+                                    @Html.DisplayNameFor(model => model.FirstName)
+                            </dt>
+                            <dd class="col-sm-8">
+                                    @Html.DisplayFor(model => model.FirstName)
+                            </dd>
+                            <dt class="col-sm-4">
+                                    @Html.DisplayNameFor(model => model.MiddleName)
+                            </dt>
+                            <dd class="col-sm-8">
+                                    @Html.DisplayFor(model => model.MiddleName)
+                            </dd>
+                                <dt class="col-sm-4">
+                                    @Html.DisplayNameFor(model => model.LastName)
+                                </dt>
+                                <dd class="col-sm-8">
+                                    @Html.DisplayFor(model => model.LastName)
+                                </dd>
+                                <dt class="col-sm-4">
+                                    @Html.DisplayNameFor(model => model.Contact)
+                                </dt>
+                                <dd class="col-sm-8">
+                                    @Html.DisplayFor(model => model.Contact)
+                                </dd>
+                                <dt class="col-sm-4">
+                                    @Html.DisplayNameFor(model => model.DateOfBirth)
+                                </dt>
+                                <dd class="col-sm-8">
+                                    @Html.DisplayFor(model => model.DateOfBirth)
+                                </dd>
+                        </dl>
+                    </div>
+                    <div class="col-md-4 border-1">
+                         <dl class="row">
+                            <dt class="col-sm-4">
+                                    @Html.DisplayNameFor(model => model.Email)
+                            </dt>
+                            <dd class="col-sm-8">
+                                    @Html.DisplayFor(model => model.Email)
+                            </dd>
+                            <dt class="col-sm-4">
+                                    @Html.DisplayNameFor(model => model.Gender)
+                            </dt>
+                            <dd class="col-sm-8">
+                                    @Html.DisplayFor(model => model.Gender)
+                            </dd>
+                            <dt class="col-sm-4">
+                                    @Html.DisplayNameFor(model => model.PlaceOfBirth)
+                            </dt>
+                            <dd class="col-sm-8">
+                                    @Html.DisplayFor(model => model.PlaceOfBirth)
+                            </dd>
+                            <dt class="col-sm-4">
+                                    @Html.DisplayNameFor(model => model.Ethnicity)
+                            </dt>
+                            <dd class="col-sm-8">
+                                    @Html.DisplayFor(model => model.Ethnicity)
+                            </dd>
+                                <dt class="col-sm-4">
+                                    @Html.DisplayNameFor(model => model.County)
+                                </dt>
+                                <dd class="col-sm-8">
+                                    @Html.DisplayFor(model => model.County.CountyName)
+                                </dd>
+                        </dl>
+                    </div>
+                    <div class="col-md-4 border">
+                            <div class="card-body text-center">
+                                <!-- .user-avatar -->
+                                <a href="user-profile.html" class="user-avatar user-avatar-floated user-avatar-xl">
+                                    <img src="@Model.MatchOfficialPhotoUrl" alt="User Avatar" class="rounded-circle user-avatar-xl">
+                                </a>
+                                <!-- /.user-avatar -->
+                                <h3 class="card-title mb-2">
+                                    <a href="user-profile.html">@Model.FullName</a>
+                                </h3>
+                                <h6 class="card-subtitle text-muted mb-3">@Model.Email</h6>
+                                <!-- grid row -->
+                                <div class="row">
+                                    <!-- grid column -->
+                                    <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12">
+                                        <!-- .metric -->
+                                        <div class="metric">
+                                            <h6 class="metric-value"> 54 </h6>
+                                            <p class="metric-label"> Total Goals </p>
+                                        </div>
+                                        <!-- /.metric -->
+                                    </div>
+                                    <!-- /grid column -->
+                                    <!-- grid column -->
+                                    <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12">
+                                        <!-- .metric -->
+                                        <div class="metric">
+                                            <h6 class="metric-value"> 53 </h6>
+                                            <p class="metric-label"> Total Assists </p>
+                                        </div>
+                                        <!-- /.metric -->
+                                    </div>
+                                    <!-- /grid column -->
+                                    <!-- grid column -->
+                                    <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12">
+                                        <!-- .metric -->
+                                        <div class="metric">
+                                            <h6 class="metric-value"> 2 </h6>
+                                            <p class="metric-label"> Games Played </p>
+                                        </div>
+                                        <!-- /.metric -->
+                                    </div>
+                                    <!-- /grid column -->
+                                </div>
+                                <!-- /grid row -->
+                            </div>
+                    </div>
+                </div>
+            </form>
+                <div>
+                    <a asp-action="Index" class="btn btn-dark"><i class="fas fa-arrow-circle-left"></i>&nbsp;Back to List</a>
+                    <a asp-action="DeletePlayerRecord" asp-route-id="@Model.MatchOfficialId" class="btn btn-danger"><i class="far fa-times-circle"></i>&nbsp;Delete</a>
+                    <a asp-action="EditPlayerRecord" class="btn btn-success" asp-route-id="@Model?.MatchOfficialId"><i class="far fa-edit"></i>&nbsp;Edit</a>
+                </div>
+        </div>
+    </div>
+</div>
+</div>

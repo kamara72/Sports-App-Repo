@@ -1,0 +1,59 @@
+﻿@model NationalCountyMeet.Web.Models.MatchVenue
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "_SubLayout";
+}
+
+<div class="card">
+    <h5 class="card-header">Add new match venue</h5>
+    <div class="card-body">
+        <form asp-action="AddNewMatchVenue" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="VenueName" class="control-label"></label>
+                        <input asp-for="VenueName" class="form-control" />
+                        <span asp-validation-for="VenueName" class="text-danger"></span>
+                    </div>
+                </div>    
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="Capacity" class="control-label"></label>
+                        <input asp-for="Capacity" class="form-control" />
+                    </div>
+                </div>  
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="CountyId" class="control-label"></label>
+                        <select asp-for="CountyId" asp-items="ViewBag.CountyId" class="form-control"></select>
+                        <span asp-validation-for="CountyId" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <div class="form-group">
+                        <label asp-for="Location" class="control-label"></label>
+                        <textarea asp-for="Location" class="form-control"></textarea>
+                        <span asp-validation-for="Location" class="text-danger"></span>
+                    </div>
+                </div>   
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="VenuePhoto" class="control-label"></label>
+                        <input asp-for="VenuePhoto" class="form-control" />
+                        <span asp-validation-for="VenuePhoto" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body border-top">
+                <a asp-controller="MatchVenues" asp-action="Index" class="btn btn-dark"><i class="fas fa-arrow-circle-left"></i>&nbsp;Back to List</a>
+                <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i>&nbsp;Save</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

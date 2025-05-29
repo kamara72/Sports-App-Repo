@@ -1,0 +1,42 @@
+﻿@model NationalCountyMeet.Web.Models.TeamGroup
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>TeamGroup</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Note)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Note)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Tournament)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Tournament.TournamentId)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.TournamentGroup)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.TournamentGroup.GroupAlias)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.County)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.County.CountyCapital)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.TeamGroupId">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

@@ -1,0 +1,79 @@
+﻿@model IEnumerable<NationalCountyMeet.Web.Models.Player>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "_SubLayout";
+    int Counter = 1;
+}
+
+<div class="row">
+    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+        <div class="card">
+            <div class="card-header">
+                <div class="row col-md-12">
+                    <div class="col-6 col-md-6">
+                        <h3>Players Listing</h3>
+                    </div>
+                    <div class="col-6 col-md-6 p-0 text-right">
+                        <a asp-controller="Players" asp-action="Create" class="btn btn-primary btn-sm"><i class="fas fa-plus"></i>&nbsp;Add New</a>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table id="example" class="table table-striped table-bordered second" style="width:100%">
+                        <thead>
+                            <tr>
+                                <th>
+                                    No.
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.FullName)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Gender)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Contact)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.RegistrationDate)
+                                </th>
+                                <th class="text-right">
+                                    Actions
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @String.Format("{0}", Counter++)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.FullName)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Gender)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Contact)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.RegistrationDate)
+                                    </td> 
+                                    <td class="text-right">
+                                        <a asp-controller="Players" asp-route-id="@item.PlayerId" asp-action="Details" class="btn btn-sm btn-light active"><i class="fas fa-eye"></i></a>
+                                        <a asp-controller="Players" asp-route-id="@item.PlayerId" asp-action="EditPlayerRecord" class="btn btn-sm btn-success"><i class="far fa-edit"></i></a>
+                                        <a asp-controller="Players" asp-route-id="@item.PlayerId" asp-action="DeletePlayerRecord" class="btn btn-sm btn-danger"><i class="far fa-trash-alt"></i></a>
+                                    </td>
+                                </tr>
+                            }                            
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

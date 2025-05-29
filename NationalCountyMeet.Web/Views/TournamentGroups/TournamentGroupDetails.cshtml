@@ -1,0 +1,47 @@
+﻿@model NationalCountyMeet.Web.Models.TournamentGroup
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "_SubLayout";
+}
+
+<div class="card">
+    <div class="container-fluid dashboard-content">
+        <div class="row">
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                <h2 class="text-primary text-uppercase mb-3">County Details</h2>
+                <form>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <dl class="row">
+                                <dt class="col-sm-4">
+                                    @Html.DisplayNameFor(model => model.GroupName)
+                                </dt>
+                                <dd class="col-sm-8">
+                                    @Html.DisplayFor(model => model.GroupName)
+                                </dd>
+                                <dt class="col-sm-4">
+                                    @Html.DisplayNameFor(model => model.GroupAlias)
+                                </dt>
+                                <dd class="col-sm-8">
+                                    @Html.DisplayFor(model => model.GroupAlias)
+                                </dd>
+                                <dt class="col-sm-4">
+                                    @Html.DisplayNameFor(model => model.Note)
+                                </dt>
+                                <dd class="col-sm-8">
+                                    @Html.DisplayFor(model => model.Note)
+                                </dd>
+                            </dl>
+                        </div>
+                    </div>
+                </form>
+                <div>
+                    <a asp-action="Index" class="btn btn-dark"><i class="fas fa-arrow-circle-left"></i>&nbsp;Back to List</a>
+                    <a asp-action="DeleteTournamentGroup" asp-route-id="@Model.TournamentGroupId" class="btn btn-danger"><i class="far fa-times-circle"></i>&nbsp;Delete</a>
+                    <a asp-action="EditTournamentGroup" class="btn btn-success" asp-route-id="@Model?.TournamentGroupId"><i class="far fa-edit"></i>&nbsp;Edit</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

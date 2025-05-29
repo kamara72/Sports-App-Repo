@@ -1,0 +1,55 @@
+﻿@model NationalCountyMeet.Web.Models.TeamGroup
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "_SubLayout";
+}
+
+<div class="card">
+    <h5 class="card-header">Create new tournament group</h5>
+    <div class="card-body">
+        <form asp-action="AddTeamToGroup">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="TournamentId" class="control-label"></label>
+                        <select asp-for="TournamentId" asp-items="ViewBag.TournamentId" class="form-control"></select>
+                        <span asp-validation-for="TournamentId" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="TournamentGroupId" class="control-label"></label>
+                        <select asp-for="TournamentGroupId" asp-items="ViewBag.TournamentGroupId" class="form-control"></select>
+                        <span asp-validation-for="TournamentGroupId" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="CountyId" class="control-label"></label>
+                        <select asp-for="CountyId" asp-items="ViewBag.CountyId" class="form-control"></select>
+                        <span asp-validation-for="CountyId" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label asp-for="Note" class="control-label"></label>
+                        <textarea asp-for="Note" class="form-control"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body border-top">
+                <a asp-controller="TeamGroups" asp-action="Index" class="btn btn-dark"><i class="fas fa-arrow-circle-left"></i>&nbsp;Back to List</a>
+                <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i>&nbsp;Save</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+

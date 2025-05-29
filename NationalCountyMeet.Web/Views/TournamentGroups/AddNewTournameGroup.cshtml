@@ -1,0 +1,48 @@
+﻿@model NationalCountyMeet.Web.Models.TournamentGroup
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "_SubLayout";
+}
+
+<div class="card">
+    <h5 class="card-header">Add new tournament group</h5>
+    <div class="card-body">
+        <form asp-action="AddNewTournameGroup">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="GroupName" class="control-label"></label>
+                        <input asp-for="GroupName" class="form-control" />
+                        <span asp-validation-for="GroupName" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="GroupAlias" class="control-label"></label>
+                        <input asp-for="GroupAlias" class="form-control" />
+                        <span asp-validation-for="GroupAlias" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label asp-for="Note" class="control-label"></label>
+                        <textarea asp-for="Note" class="form-control"></textarea>
+                    </div>
+                </div>               
+            </div>
+            <div class="card-body border-top">
+                <a asp-controller="TournamentGroups" asp-action="Index" class="btn btn-dark"><i class="fas fa-arrow-circle-left"></i>&nbsp;Back to List</a>
+                <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i>&nbsp;Save</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+

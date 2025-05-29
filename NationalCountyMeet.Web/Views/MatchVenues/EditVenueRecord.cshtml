@@ -1,0 +1,46 @@
+﻿@model NationalCountyMeet.Web.Models.MatchVenue
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "_SubLayout";
+}
+
+<div class="card">
+    <h5 class="card-header">Edit <span class="text-danger">@Model.VenueName</span> record!</h5>
+    <div class="card-body">
+        <form asp-action="EditVenueRecord">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="MatchVenueId" />
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="VenueName" class="control-label"></label>
+                        <input asp-for="VenueName" class="form-control" />
+                        <span asp-validation-for="VenueName" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="Capacity" class="control-label"></label>
+                        <input asp-for="Capacity" class="form-control" />
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label asp-for="Location" class="control-label"></label>
+                        <textarea asp-for="Location" class="form-control"></textarea>
+                        <span asp-validation-for="Location" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body border-top">
+                <a asp-controller="MatchVenues" asp-action="Index" class="btn btn-dark"><i class="fas fa-arrow-circle-left"></i>&nbsp;Back to List</a>
+                <button type="submit" class="btn btn-success"><i class="fas fa-save"></i>&nbsp;Update</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

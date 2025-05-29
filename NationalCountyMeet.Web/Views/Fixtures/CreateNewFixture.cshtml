@@ -1,0 +1,88 @@
+﻿@model NationalCountyMeet.Web.Models.Fixture
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "_SubLayout";
+}
+
+<div class="card">
+    <h5 class="card-header">New fixture form</h5>
+    <div class="card-body">
+        <form asp-action="CreateNewFixture">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="MatchDate" class="control-label"></label>
+                        <input asp-for="MatchDate" class="form-control" />
+                        <span asp-validation-for="MatchDate" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="StartTime" class="control-label"></label>
+                        <input asp-for="StartTime" class="form-control" />
+                        <span asp-validation-for="StartTime" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="CenterOfficialId" class="control-label"></label>
+                        <select asp-for="CenterOfficialId" asp-items="ViewBag.CenterOfficialId" class="form-control"></select>
+                        <span asp-validation-for="CenterOfficialId" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="FirstLinesManId" class="control-label"></label>
+                        <select asp-for="FirstLinesManId" asp-items="ViewBag.FirstLinesManId" class="form-control"></select>
+                        <span asp-validation-for="FirstLinesManId" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="SecondLinesManId" class="control-label"></label>
+                        <select asp-for="SecondLinesManId" asp-items="ViewBag.SecondLinesManId" class="form-control"></select>
+                        <span asp-validation-for="SecondLinesManId" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="FourthOfficial" class="control-label"></label>
+                        <select asp-for="FourthOfficial" asp-items="ViewBag.FourthOfficial" class="form-control"></select>
+                        <span asp-validation-for="FourthOfficial" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="HomeTeamId" class="control-label"></label>
+                        <select asp-for="HomeTeamId" asp-items="ViewBag.HomeTeamId" class="form-control"></select>
+                        <span asp-validation-for="HomeTeamId" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="AwayTeamId" class="control-label"></label>
+                        <select asp-for="AwayTeamId" asp-items="ViewBag.AwayTeamId" class="form-control"></select>
+                        <span asp-validation-for="AwayTeamId" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="MatchVenueId" class="control-label"></label>
+                        <select asp-for="MatchVenueId" asp-items="ViewBag.MatchVenueId" class="form-control"></select>
+                        <span asp-validation-for="MatchVenueId" class="text-danger"></span>
+                    </div>
+                </div>             
+            </div>
+            <div class="card-body border-top">
+                <a asp-controller="Fixtures" asp-action="Index" class="btn btn-dark"><i class="fas fa-arrow-circle-left"></i>&nbsp;Back to List</a>
+                <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i>&nbsp;Save</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,62 @@
+﻿@model NationalCountyMeet.Web.Models.County
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "_SubLayout";
+}
+
+<div class="card">
+    <h5 class="card-header">New County creation form</h5>
+    <div class="card-body">
+        <form asp-action="Create" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="CountyName" class="control-label"></label>
+                        <input asp-for="CountyName" class="form-control" />
+                        <span asp-validation-for="CountyName" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="CountyCapital" class="control-label"></label>
+                        <input asp-for="CountyCapital" class="form-control" />
+                        <span asp-validation-for="CountyCapital" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="CountyRegion" class="control-label"></label>
+                        <input asp-for="CountyRegion" class="form-control" />
+                        <span asp-validation-for="CountyRegion" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="YearEstablished" class="control-label"></label>
+                        <input asp-for="YearEstablished" class="form-control" />
+                        <span asp-validation-for="YearEstablished" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="CountyFlagPhoto" class="control-label"></label>
+                        <input asp-for="CountyFlagPhoto" class="form-control" />
+                        <span asp-validation-for="CountyFlagPhoto" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body border-top">
+                <a asp-controller="Counties" asp-action="Index" class="btn btn-dark"><i class="fas fa-arrow-circle-left"></i>&nbsp;Back to List</a>
+                <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i>&nbsp;Save</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

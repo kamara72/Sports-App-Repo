@@ -1,0 +1,57 @@
+﻿@model NationalCountyMeet.Web.Models.Tournament
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "_SubLayout";
+}
+
+<div class="card">
+    <h5 class="card-header">Edit <span class="text-danger">@Model.TournamentYear.Year</span> season record!</h5>
+    <div class="card-body">
+        <form asp-action="EditTournamentRecord">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="TournamentId" />
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="TournamentYear" class="control-label"></label>
+                        <input asp-for="TournamentYear" class="form-control" />
+                        <span asp-validation-for="TournamentYear" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="StartDate" class="control-label"></label>
+                        <input asp-for="StartDate" class="form-control" />
+                        <span asp-validation-for="StartDate" class="text-danger"></span>
+                    </div>
+                </div>
+               <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="EndDate" class="control-label"></label>
+                        <input asp-for="EndDate" class="form-control" />
+                        <span asp-validation-for="EndDate" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label asp-for="Note" class="control-label"></label>
+                        <textarea asp-for="Note" class="form-control"></textarea>
+                        <span asp-validation-for="Note" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body border-top">
+                <a asp-controller="Tournaments" asp-action="Index" class="btn btn-dark"><i class="fas fa-arrow-circle-left"></i>&nbsp;Back to List</a>
+                @* <input type="submit" value="Update" class="btn btn-primary" /> *@
+                <button type="submit" class="btn btn-success"><i class="far fa-edit"></i>&nbsp;Update</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
