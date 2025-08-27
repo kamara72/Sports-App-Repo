@@ -1,0 +1,28 @@
+https://only.flasherandroid.com/
+
+
+
+from f in Fixtures
+join c in Counties 
+on f.AwayTeamId equals c.CountyId
+join d in Counties
+on f.HomeTeamId equals d.CountyId
+join co in MatchOfficials
+on f.CenterOfficialId equals co.MatchOfficialId
+join ln1 in MatchOfficials
+on f.FirstLinesManId equals ln1.MatchOfficialId
+join ln2 in MatchOfficials
+on f.SecondLinesManId equals ln2.MatchOfficialId
+join v in Venues 
+on f.MatchVenueId equals v.MatchVenueId
+select new {
+	f.AwayTeamId,
+	f.MatchDate,
+	f.StartTime,
+	Away = c.CountyName,
+	Home = d.CountyName,
+	CenterOfficial = co.FirstName,
+	FirstLinesman = ln1.FirstName,
+	SecondLinesman = ln2.FirstName,
+	v.VenueName
+}

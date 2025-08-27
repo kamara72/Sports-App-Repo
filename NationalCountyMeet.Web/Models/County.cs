@@ -6,11 +6,6 @@ namespace NationalCountyMeet.Web.Models
 {
     public class County
     {
-        public County()
-        {
-            PlayerId = new List<string>();
-        }
-
         [Key]
         public int CountyId { get; set; }
 
@@ -36,6 +31,7 @@ namespace NationalCountyMeet.Web.Models
         public IFormFile? CountyFlagPhoto { get; set; }
 
         public string? CountyFlagPhotoUrl { get; set; }
-        public IList<string>? PlayerId { get; }
+        public List<Player>? Players { get; }
+        public List<TeamOfficial>? TeamOfficial { get; set; }
     }
 }

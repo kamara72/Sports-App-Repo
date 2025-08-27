@@ -6,6 +6,7 @@ namespace NationalCountyMeet.Web.Models
 {
     public class MatchOfficial
     {
+        [Key]
         public int MatchOfficialId { get; set; }
         [Required]
         [MaxLength(50)]

@@ -9,7 +9,7 @@
 <div class="card">
     <h5 class="card-header">Edit <span class="text-danger">@Model.FullName</span> record!</h5>
     <div class="card-body">
-        <form asp-action="EditPlayerRecord">
+        <form asp-action="EditPlayerRecord" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="PlayerId" />
             <div class="row">
@@ -43,9 +43,15 @@
                 </div>
                 <div class="col-md-4">
                     <div class="form-group">
+                        <label asp-for="CountyOfOriginCountyId" class="control-label"></label>
+                        <select asp-for="CountyOfOriginCountyId" asp-items="ViewBag.CountyOfOriginCountyId" class="form-control"></select>
+                        <span asp-validation-for="CountyOfOriginCountyId" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
                         <label asp-for="JerseyNumber" class="control-label"></label>
                         <input asp-for="JerseyNumber" class="form-control" />
-                        <span asp-validation-for="JerseyNumber" class="text-danger"></span>
                     </div>
                 </div>
                 <div class="col-md-4">
@@ -64,9 +70,15 @@
                 </div>
                 <div class="col-md-4">
                     <div class="form-group">
+                        <label asp-for="HomeContact" class="control-label"></label>
+                        <input asp-for="HomeContact" class="form-control" />
+                        <span asp-validation-for="HomeContact" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
                         <label asp-for="Email" class="control-label"></label>
                         <input asp-for="Email" class="form-control" />
-                        <span asp-validation-for="Email" class="text-danger"></span>
                     </div>
                 </div>
                 <div class="col-md-4">
@@ -80,7 +92,6 @@
                     <div class="form-group">
                         <label asp-for="Gender" class="control-label"></label>
                         <select asp-for="Gender" asp-items="@Html.GetEnumSelectList<Gender>()" class="form-control"></select>
-                        <span asp-validation-for="Gender" class="text-danger"></span>
                     </div>
                 </div>
                 <div class="col-md-4">
@@ -97,16 +108,40 @@
                         <span asp-validation-for="Ethnicity" class=" text-danger"></span>
                     </div>
                 </div>
+                <div class="col-md-4"></div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        @* <label asp-for="PlayerPhoto" class="control-label"></label> *@
+                        <p></p>
+                        <img id="playerImagePrv" src="@Model.PlayerPhotoUrl" width="230" height="160" />
+                        <input asp-for="PlayerPhoto" class="form-control" style="width: 230px;"
+                               onchange="document.getElementById('playerImagePrv').src = window.URL.createObjectURL(this.files[0])" />
+                        <span asp-validation-for="PlayerPhoto" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-8 offset-1">
+                    <div class="form-group">
+                        <label asp-for="HomeAddress" class="control-label"></label>
+                        <textarea asp-for="HomeAddress" onreset="false" style="height: 200px;" class="form-control"></textarea>
+                    </div>
+                </div>
             </div>
             <div class="card-body border-top">
                 <a asp-controller="Players" asp-action="Index" class="btn btn-dark"><i class="fas fa-arrow-circle-left"></i>&nbsp;Back to List</a>
-                @* <input type="submit" value="Update" class="btn btn-primary" /> *@
-                <button type="submit" class="btn btn-success"><i class="far fa-edit"></i>&nbsp;Update</button>
+                <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i>&nbsp;Save</button>
             </div>
         </form>
     </div>
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script type="text/javascript">
+        $(".custom-file-input").on("change", function(){
+            var fileName = $(this).val().split("\\").pop();
+            $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+        });
+    </script>
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }

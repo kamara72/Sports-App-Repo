@@ -1,8 +1,9 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using NationalCountyMeet.Web.Models.Others;
+using System.ComponentModel.DataAnnotations;
 
 namespace NationalCountyMeet.Web.Models
 {
-    public class TournamentGroup
+    public class TournamentGroup : UserActivities
     {
         [Key]
         public int TournamentGroupId { get; set; }
@@ -16,5 +17,7 @@ namespace NationalCountyMeet.Web.Models
         public string GroupAlias { get; set; }
 
         public string? Note { get; set; }
+
+       // public List<TeamGroup>? TeamGroup { get; set; }
     }
 }

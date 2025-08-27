@@ -3,6 +3,7 @@
 @{
     ViewData["Title"] = "Details";
     Layout = "_SubLayout";
+    int Counter = 1;
 }
 
 <div class="card">
@@ -36,6 +37,30 @@
                         </div>
                     </div>
                 </form>
+
+                <div b-excgvkapwk="" class="col-xl-9 col-lg-12 col-md-6 col-sm-12 col-12">
+                    <div b-excgvkapwk="" class="card">
+                        <h5 b-excgvkapwk="" class="card-header">Group County Listing</h5>
+                        <div b-excgvkapwk="" class="card-body p-0">
+                            <div b-excgvkapwk="" class="table-responsive">
+                                <table b-excgvkapwk="" class="table">
+                                    <thead b-excgvkapwk="" class="bg-light">
+                                        <tr b-excgvkapwk="" class="border-0">
+                                            <th b-excgvkapwk="" class="border-0">No.</th>
+                                            <th b-excgvkapwk="" class="border-0">County Name</th>
+                                            <th b-excgvkapwk="" class="border-0">Capital</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody b-excgvkapwk="">                             
+                                        <tr b-excgvkapwk="">
+                                            <td b-excgvkapwk="" colspan="9"><a b-excgvkapwk="" href="#" class="btn btn-outline-light float-right">View Historical Players</a></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <div>
                     <a asp-action="Index" class="btn btn-dark"><i class="fas fa-arrow-circle-left"></i>&nbsp;Back to List</a>
                     <a asp-action="DeleteTournamentGroup" asp-route-id="@Model.TournamentGroupId" class="btn btn-danger"><i class="far fa-times-circle"></i>&nbsp;Delete</a>

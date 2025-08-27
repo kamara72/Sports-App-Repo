@@ -54,14 +54,14 @@ namespace NationalCountyMeet.Web.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> CreateNewTournament([Bind("TournamentId,TournamentYear,StartDate,EndDate,Note")] Tournament tournament)
+        public async Task<IActionResult> CreateNewTournament(Tournament tournament)
         {
-            if (ModelState.IsValid)
-            {
-                _context.Add(tournament);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
+            tournament.CreatedBy = "kamara@user.com";
+            tournament.CreatedDate = DateTime.Now;
+            _context.Add(tournament);
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+        
             return View(tournament);
         }
 
@@ -92,25 +92,23 @@ namespace NationalCountyMeet.Web.Controllers
             {
                 return NotFound();
             }
-
-            if (ModelState.IsValid)
+            try
             {
-                try
+                tournament.ModifiedDate = DateTime.Now;
+                tournament.ModifiedBy = "mod@user";
+                _context.Update(tournament);
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!TournamentExists(tournament.TournamentId))
                 {
-                    _context.Update(tournament);
-                    await _context.SaveChangesAsync();
+                    return NotFound();
                 }
-                catch (DbUpdateConcurrencyException)
+                else
                 {
-                    if (!TournamentExists(tournament.TournamentId))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
+                    throw;
+                }            
                 return RedirectToAction(nameof(Index));
             }
             return View(tournament);

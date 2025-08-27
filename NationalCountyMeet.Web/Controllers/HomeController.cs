@@ -16,6 +16,7 @@ namespace NationalCountyMeet.Web.Controllers
         public IActionResult Index()
         {
             return View();
+            // return !this.User.Identity.IsAuthenticated ? this.Redirect("~/Identity/Account/Login") : this.Redirect("Index");
         }
 
         public IActionResult Privacy()

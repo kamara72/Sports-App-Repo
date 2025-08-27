@@ -1,8 +1,9 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using NationalCountyMeet.Web.Models.Others;
+using System.ComponentModel.DataAnnotations;
 
 namespace NationalCountyMeet.Web.Models
 {
-    public class TournamentRound
+    public class TournamentRound : UserActivities
     {
         [Key]
         public int TournamentRoundId { get; set; }

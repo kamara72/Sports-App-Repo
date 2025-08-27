@@ -1,0 +1,110 @@
+﻿@model NationalCountyMeet.Web.Models.PlayerStatistic
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "_SubLayout";
+}
+
+<div class="card">
+    <h5 class="card-header">Add new player statistics</h5>
+    <div class="card-body">
+        <form asp-action="AddNewPlayerStatistics">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label asp-for="PlayerId" class="control-label"></label>
+                        <select asp-for="PlayerId" class="form-control" asp-items="ViewBag.PlayerId"></select>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label asp-for="MatchId" class="control-label"></label>
+                        <select asp-for="MatchId" class="form-control" asp-items="ViewBag.MatchId"></select>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label asp-for="Saves" class="control-label"></label>
+                        <input asp-for="Saves" class="form-control" />
+                        <span asp-validation-for="Saves" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label asp-for="MinutesPlayed" class="control-label"></label>
+                        <input asp-for="MinutesPlayed" class="form-control" />
+                        <span asp-validation-for="MinutesPlayed" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label asp-for="PassesCompleted" class="control-label"></label>
+                        <input asp-for="PassesCompleted" class="form-control" />
+                        <span asp-validation-for="PassesCompleted" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label asp-for="Goals" class="control-label"></label>
+                        <input asp-for="Goals" class="form-control" />
+                        <span asp-validation-for="Goals" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label asp-for="Asists" class="control-label"></label>
+                        <input asp-for="Asists" class="form-control" />
+                        <span asp-validation-for="Asists" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label asp-for="Shots" class="control-label"></label>
+                        <input asp-for="Shots" class="form-control" />
+                        <span asp-validation-for="Shots" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label asp-for="ShotsOnTarget" class="control-label"></label>
+                        <input asp-for="ShotsOnTarget" class="form-control" />
+                        <span asp-validation-for="ShotsOnTarget" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label asp-for="Tackles" class="control-label"></label>
+                        <input asp-for="Tackles" class="form-control" />
+                        <span asp-validation-for="Tackles" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label asp-for="RedCards" class="control-label"></label>
+                        <input asp-for="RedCards" class="form-control" />
+                        <span asp-validation-for="RedCards" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label asp-for="YellowCards" class="control-label"></label>
+                        <input asp-for="YellowCards" class="form-control" />
+                        <span asp-validation-for="YellowCards" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body border-top">
+                <a asp-controller="Counties" asp-action="Index" class="btn btn-dark"><i class="fas fa-arrow-circle-left"></i>&nbsp;Back to List</a>
+                <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i>&nbsp;Save</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+

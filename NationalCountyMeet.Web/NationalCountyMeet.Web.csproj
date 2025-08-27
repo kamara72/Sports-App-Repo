@@ -17,8 +17,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="wwwroot\documents\Players\" />
     <Folder Include="wwwroot\images\county\" />
     <Folder Include="wwwroot\images\matchofficial\" />
+    <Folder Include="wwwroot\images\teamofficial\" />
+    <Folder Include="wwwroot\images\tournamentofficial\" />
     <Folder Include="wwwroot\images\venue\" />
     <Folder Include="wwwroot\images\player\" />
   </ItemGroup>

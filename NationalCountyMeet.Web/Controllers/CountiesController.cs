@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using NationalCountyMeet.Web.Data;
 using NationalCountyMeet.Web.Models;
+using NationalCountyMeet.Web.Models.ViewModels;
 
 namespace NationalCountyMeet.Web.Controllers
 {
@@ -37,18 +38,19 @@ namespace NationalCountyMeet.Web.Controllers
             {
                 return NotFound();
             }
-
             var county = await _context.Counties
+                .Include(p => p.Players)
+                .Include(o => o.TeamOfficial)
                 .FirstOrDefaultAsync(m => m.CountyId == id);
+
             if (county == null)
             {
                 return NotFound();
             }
-
             return View(county);
         }
 
-        // GET: Counties/Create
+        // GET: Counties/Create 
         public IActionResult Create()
         {
             return View();

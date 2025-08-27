@@ -1,0 +1,82 @@
+﻿@using NationalCountyMeet.Web.Models.Others
+@model NationalCountyMeet.Web.Models.ViewModels.EditRoleVM
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "_SubLayout";
+    int Counter = 1;
+}
+
+<div class="card">
+    <h5 class="card-header">Edit user's role</h5>
+    <div class="col-md-3 mt-3">
+        <a class="btn btn-sm btn-primary" asp-controller="Roles" asp-route-roleId="@Model.RoleId" asp-action="EditUserInRole">Add / Remove Role</a>
+    </div>
+    <div class="card-body">
+        <form asp-action="EditUserRole">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="RoleId" />
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="RoleName" class="control-label"></label>
+                        <input asp-for="RoleName" class="form-control" />
+                        <span asp-validation-for="RoleName" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-6 bg-black">
+                    <div b-excgvkapwk="">
+                        <div b-excgvkapwk="" class="card">
+                            <h5 b-excgvkapwk="" class="card-header">List of role's users</h5>
+                            <div b-excgvkapwk="" class="card-body p-0">
+                                <div b-excgvkapwk="" class="table-responsive">
+                                    <table b-excgvkapwk="" class="table">
+                                        <thead b-excgvkapwk="" class="bg-light">
+                                            <tr b-excgvkapwk="" class="border-0">
+                                                <th b-excgvkapwk="" class="border-0">No.</th>
+                                                <th b-excgvkapwk="" class="border-0">Img</th>
+                                                <th b-excgvkapwk="" class="border-0">Username</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody b-excgvkapwk="">
+                                            <tbody b-excgvkapwk="">
+                                                @if (Model.Users.Any())
+                                                {
+                                                    @foreach (var users in Model.Users)
+                                                    {
+                                                        <tr b-excgvkapwk="">
+                                                            <td>
+                                                                @String.Format("{0}", Counter++)
+                                                            </td>
+                                                            <td b-excgvkapwk="">
+                                                                <div b-excgvkapwk="" class="m-r-10"><img b-excgvkapwk="" src="~/images/default.jpg" alt="user" class="rounded" width="35" height="35"></div>
+                                                            </td>
+                                                            <td b-excgvkapwk="">
+                                                                <a asp-controller="TeamOfficials" asp-route-id="" asp-action="TeamOfficialsDetails">
+                                                                    @users
+                                                                </a>
+                                                            </td>
+                                                        </tr>
+                                                    }
+                                                }
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body border-top">
+                <a asp-controller="Roles" asp-action="RolesList" class="btn btn-dark"><i class="fas fa-arrow-circle-left"></i>&nbsp;Back to List</a>
+                <button type="submit" class="btn btn-success"><i class="far fa-edit"></i>&nbsp;Update</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

@@ -1,0 +1,66 @@
+﻿@model NationalCountyMeet.Web.Models.Match
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "_SubLayout";
+}
+
+<div class="card">
+    <h5 class="card-header">Edit  <span class="text-danger">@String.Format("{0}", Model.FixtureId)</span>  record!</h5>
+    <div class="card-body">
+        <form asp-action="EditMatchResult">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input asp-for="MatchId" type="hidden" />
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="FixtureId" class="control-label"></label>
+                        <select asp-for="FixtureId" readonly class="form-control" asp-items="ViewBag.FixtureId"></select>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="MatchVenueId" class="control-label"></label>
+                        <select asp-for="MatchVenueId" class="form-control" asp-items="ViewBag.MatchVenueId"></select>
+                    </div>
+                </div>
+@*                 <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="TournamentRoundId" class="control-label"></label>
+                        <select asp-for="TournamentRoundId" class="form-control" asp-items="ViewBag.TournamentRoundId"></select>
+                    </div>
+                </div> *@
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="HomeTeamScore" class="control-label"></label>
+                        <input asp-for="HomeTeamScore" class="form-control" />
+                        <span asp-validation-for="HomeTeamScore" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="AwayTeamScore" class="control-label"></label>
+                        <input asp-for="AwayTeamScore" class="form-control" />
+                        <span asp-validation-for="AwayTeamScore" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label asp-for="Notes" class="control-label"></label>
+                        <textarea asp-for="Notes" class="form-control"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body border-top">
+                <a asp-controller="Matches" asp-action="Index" class="btn btn-dark"><i class="fas fa-arrow-circle-left"></i>&nbsp;Back to List</a>
+                <button type="submit" class="btn btn-success"><i class="fas fa-save"></i>&nbsp;Update</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

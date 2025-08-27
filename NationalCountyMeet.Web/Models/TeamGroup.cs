@@ -1,8 +1,9 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using NationalCountyMeet.Web.Models.Others;
+using System.ComponentModel.DataAnnotations;
 
 namespace NationalCountyMeet.Web.Models
 {
-    public class TeamGroup
+    public class TeamGroup : UserActivities
     {
         [Key]
         public int TeamGroupId { get; set; }

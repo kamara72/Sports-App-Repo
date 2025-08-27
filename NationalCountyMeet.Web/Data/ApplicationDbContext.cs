@@ -1,10 +1,11 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using NationalCountyMeet.Web.Models;
+using NationalCountyMeet.Web.Models.Others;
 
 namespace NationalCountyMeet.Web.Data
 {
-    public class ApplicationDbContext : IdentityDbContext
+    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
@@ -21,16 +22,18 @@ namespace NationalCountyMeet.Web.Data
             //builder.Entity<Student>()
             //    .ToTable(name: "Students", studTeable => studTeable.IsTemporal());
 
-            //foreach (var relationship in builder.Model.GetEntityTypes().SelectMany(e => e.GetForeignKeys()))
-            //{
-            //    relationship.DeleteBehavior = DeleteBehavior.Restrict;
-            //}
+            builder.Entity<Player>().HasQueryFilter(p => !p.IsDeleted);
 
-            //builder.Entity<MatchVenue>()
-            //    .HasOne(f => f.County)
-            //    .WithMany()
-            //    .HasForeignKey(f => f.CountyId)
-            //    .OnDelete(DeleteBehavior.Cascade);
+            foreach (var relationship in builder.Model.GetEntityTypes().SelectMany(e => e.GetForeignKeys()))
+            {
+                relationship.DeleteBehavior = DeleteBehavior.Restrict;
+            }
+
+            builder.Entity<MatchLineup>()
+                .HasOne(f => f.Player)
+                .WithMany()
+                .HasForeignKey(f => f.PlayerId)
+                .OnDelete(DeleteBehavior.Cascade);
         }
 
 
@@ -41,7 +44,15 @@ namespace NationalCountyMeet.Web.Data
         public DbSet<TournamentGroup> TournamentGroups { get; set; }
         public DbSet<TournamentRound> TournamentRounds { get; set; }
         public DbSet<TeamGroup> TeamGroups { get; set; }
-        public DbSet<MatchOfficial> MatchOfficials { get; set; }
         public DbSet<Fixture> Fixtures { get; set; }
+        public DbSet<MatchOfficial> MatchOfficials { get; set; }
+        public DbSet<Match> Matches { get; set; }
+        public DbSet<PlayerStatistic> PlayerStatistics { get; set; }
+        public DbSet<MatchLineup> MatchLineups { get; set; }
+        public DbSet<Position> Positions { get; set; }
+        public DbSet<TournamentOfficial> TournamentOfficials { get; set; }
+        public DbSet<TeamOfficial> TeamOfficials { get; set; }
+        public DbSet<PlayerDocument> PlayerDocuments { get; set; }
+        public DbSet<TeamGroupDetails> TeamGroupDetails { get; set; }
     }
 }

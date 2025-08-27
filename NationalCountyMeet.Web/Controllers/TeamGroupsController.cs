@@ -63,6 +63,8 @@ namespace NationalCountyMeet.Web.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> AddTeamToGroup(TeamGroup teamGroup)
         {
+            teamGroup.CreatedDate = DateTime.Now;
+            teamGroup.CreatedBy = "bangalee@user.com";
             _context.Add(teamGroup);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
@@ -107,6 +109,8 @@ namespace NationalCountyMeet.Web.Controllers
             {
                 try
                 {
+                    teamGroup.ModifiedDate = DateTime.UtcNow;
+                    teamGroup.ModifiedBy = "john@doe.com";
                     _context.Update(teamGroup);
                     await _context.SaveChangesAsync();
                 }

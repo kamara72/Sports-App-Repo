@@ -26,6 +26,7 @@ namespace NationalCountyMeet.Web.Controllers
         }
 
         // GET: TournamentGroups/Details/5
+
         public async Task<IActionResult> TournamentGroupDetails(int? id)
         {
             if (id == null)
@@ -34,6 +35,7 @@ namespace NationalCountyMeet.Web.Controllers
             }
 
             var tournamentGroup = await _context.TournamentGroups
+                .Include(t => t.TournamentGroupId)
                 .FirstOrDefaultAsync(m => m.TournamentGroupId == id);
             if (tournamentGroup == null)
             {
@@ -58,6 +60,8 @@ namespace NationalCountyMeet.Web.Controllers
         {
             if (ModelState.IsValid)
             {
+                tournamentGroup.CreatedBy = "amos@user.com";
+                tournamentGroup.CreatedDate = DateTime.Now;
                 _context.Add(tournamentGroup);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -86,33 +90,31 @@ namespace NationalCountyMeet.Web.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> EditTournamentGroup(int id, [Bind("TournamentGroupId,GroupName,GroupAlias,Note")] TournamentGroup tournamentGroup)
+        public async Task<IActionResult> EditTournamentGroup(int id, TournamentGroup tournamentGroup)
         {
             if (id != tournamentGroup.TournamentGroupId)
             {
                 return NotFound();
             }
-
-            if (ModelState.IsValid)
+            try
             {
-                try
-                {
-                    _context.Update(tournamentGroup);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!TournamentGroupExists(tournamentGroup.TournamentGroupId))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
+                tournamentGroup.ModifiedDate = DateTime.Now;
+                tournamentGroup.ModifiedBy = "bangalee@user.com";
+                _context.Update(tournamentGroup);
+                await _context.SaveChangesAsync();
             }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!TournamentGroupExists(tournamentGroup.TournamentGroupId))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+            return RedirectToAction(nameof(Index));
             return View(tournamentGroup);
         }
 

@@ -1,0 +1,53 @@
+﻿@model NationalCountyMeet.Web.Models.ViewModels.PlayerDocumentVM
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "_SubLayout";
+}
+
+<div class="card">
+    <h5 class="card-header">Add player document form</h5>
+    <div class="card-body">
+        <form asp-action="AddNewPlayerDocument" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="PlayerId" class="control-label"></label>
+                        <select asp-for="PlayerId" asp-items="ViewBag.PlayerId" class="form-control"></select>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="Files" class="control-label"></label>
+                        <input asp-for="Files" class="form-control" />
+                        <span asp-validation-for="Files" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="DocumentType" class="control-label"></label>
+                        <input asp-for="DocumentType" class="form-control" />
+                        <span asp-validation-for="DocumentType" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label asp-for="Description" class="control-label"></label>
+                        <textarea asp-for="Description" onreset="false" style="height: 200px;" class="form-control"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body border-top">
+                <a asp-controller="Players" asp-action="Index" class="btn btn-dark"><i class="fas fa-arrow-circle-left"></i>&nbsp;Back to List</a>
+                <button type="submit" class="btn btn-primary"><i class="fas fa-upload"></i>&nbsp;Upload</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

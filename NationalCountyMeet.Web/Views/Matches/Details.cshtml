@@ -1,0 +1,54 @@
+﻿@model NationalCountyMeet.Web.Models.Match
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Match</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.HomeTeamScore)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.HomeTeamScore)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.AwayTeamScore)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.AwayTeamScore)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Notes)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Notes)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Fixture)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Fixture.FixtureId)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.MatchVenue)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.MatchVenue.Location)
+        </dd>
+@*         <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.TournamentRound)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.TournamentRound.Rounds)
+        </dd> *@
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.MatchId">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

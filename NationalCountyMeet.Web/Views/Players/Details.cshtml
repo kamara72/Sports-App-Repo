@@ -1,30 +1,35 @@
-﻿@model NationalCountyMeet.Web.Models.Player
+﻿@model NationalCountyMeet.Web.Models.ViewModels.PlayerDetailsVM
 
 @{
     ViewData["Title"] = "Details";
     Layout = "_SubLayout";
 }
 <div class="card">
-<div class="container-fluid dashboard-content">
-    <div class="row">
-        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-            <h2 class="text-primary text-uppercase mb-3">Player's Profile</h2>
-            <form>
-                <div class="row">
-                    <div class="col-md-4">
-                        <dl class="row">
-                            <dt class="col-sm-4">
-                                @Html.DisplayNameFor(model => model.FirstName)
-                            </dt>
-                            <dd class="col-sm-8">
-                                @Html.DisplayFor(model => model.FirstName)
-                            </dd>
-                            <dt class="col-sm-4">
-                                @Html.DisplayNameFor(model => model.MiddleName)
-                            </dt>
-                            <dd class="col-sm-8">
-                                @Html.DisplayFor(model => model.MiddleName)
-                            </dd>
+    <div class="container-fluid dashboard-content">
+        <div class="row">
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                <h2 class="text-primary text-uppercase mb-3">Player's Profile</h2>
+                <div>
+                    <a asp-action="Index" class="btn btn-dark"><i class="fas fa-arrow-circle-left"></i>&nbsp;Back to List</a>
+                    <a asp-action="DeletePlayerRecord" asp-route-id="@Model.PlayerID" class="btn btn-danger"><i class="far fa-times-circle"></i>&nbsp;Delete</a>
+                    <a asp-action="EditPlayerRecord" class="btn btn-success" asp-route-id="@Model?.PlayerID"><i class="far fa-edit"></i>&nbsp;Edit</a>
+                </div>
+                <form>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <dl class="row">
+                                <dt class="col-sm-4">
+                                    @Html.DisplayNameFor(model => model.FirstName)
+                                </dt>
+                                <dd class="col-sm-8">
+                                    @Html.DisplayFor(model => model.FirstName)
+                                </dd>
+                                <dt class="col-sm-4">
+                                    @Html.DisplayNameFor(model => model.MiddleName)
+                                </dt>
+                                <dd class="col-sm-8">
+                                    @Html.DisplayFor(model => model.MiddleName)
+                                </dd>
                                 <dt class="col-sm-4">
                                     @Html.DisplayNameFor(model => model.LastName)
                                 </dt>
@@ -50,39 +55,39 @@
                                     @Html.DisplayFor(model => model.JerseyNumber)
                                 </dd>
                                 <dt class="col-sm-4">
-                                    @Html.DisplayNameFor(model => model.PlayerCountyID)
+                                    @Html.DisplayNameFor(model => model.CountyId)
                                 </dt>
                                 <dd class="col-sm-8">
-                                    @Html.DisplayFor(model => model.PlayerCountyID)
+                                    @Html.DisplayFor(model => model.CountyName)
                                 </dd>
-                        </dl>
-                    </div>
-                    <div class="col-md-4 border-1">
-                         <dl class="row">
-                            <dt class="col-sm-4">
-                                @Html.DisplayNameFor(model => model.Email)
-                            </dt>
-                            <dd class="col-sm-8">
-                                @Html.DisplayFor(model => model.Email)
-                            </dd>
-                            <dt class="col-sm-4">
-                                @Html.DisplayNameFor(model => model.Gender)
-                            </dt>
-                            <dd class="col-sm-8">
-                                @Html.DisplayFor(model => model.Gender)
-                            </dd>
-                            <dt class="col-sm-4">
-                                @Html.DisplayNameFor(model => model.PlaceOfBirth)
-                            </dt>
-                            <dd class="col-sm-8">
-                                @Html.DisplayFor(model => model.PlaceOfBirth)
-                            </dd>
-                            <dt class="col-sm-4">
-                                @Html.DisplayNameFor(model => model.Ethnicity)
-                            </dt>
-                            <dd class="col-sm-8">
-                                @Html.DisplayFor(model => model.Ethnicity)
-                            </dd>
+                            </dl>
+                        </div>
+                        <div class="col-md-4 border-1">
+                            <dl class="row">
+                                <dt class="col-sm-4">
+                                    @Html.DisplayNameFor(model => model.Email)
+                                </dt>
+                                <dd class="col-sm-8">
+                                    @Html.DisplayFor(model => model.Email)
+                                </dd>
+                                <dt class="col-sm-4">
+                                    @Html.DisplayNameFor(model => model.Gender)
+                                </dt>
+                                <dd class="col-sm-8">
+                                    @Html.DisplayFor(model => model.Gender)
+                                </dd>
+                                <dt class="col-sm-4">
+                                    @Html.DisplayNameFor(model => model.PlaceOfBirth)
+                                </dt>
+                                <dd class="col-sm-8">
+                                    @Html.DisplayFor(model => model.PlaceOfBirth)
+                                </dd>
+                                <dt class="col-sm-4">
+                                    @Html.DisplayNameFor(model => model.Ethnicity)
+                                </dt>
+                                <dd class="col-sm-8">
+                                    @Html.DisplayFor(model => model.Ethnicity)
+                                </dd>
                                 <dt class="col-sm-4">
                                     @Html.DisplayNameFor(model => model.PlayerPosition)
                                 </dt>
@@ -90,14 +95,14 @@
                                     @Html.DisplayFor(model => model.PlayerPosition)
                                 </dd>
                                 <dt class="col-sm-4">
-                                    @Html.DisplayNameFor(model => model.County)
+                                    @Html.DisplayNameFor(model => model.CountyOfOriginCountyId)
                                 </dt>
                                 <dd class="col-sm-8">
-                                    @Html.DisplayFor(model => model.County.CountyName)
+                                    @Html.DisplayFor(model => model.CountyOfOriginCounty)
                                 </dd>
-                        </dl>
-                    </div>
-                    <div class="col-md-4 border">
+                            </dl>
+                        </div>
+                        <div class="col-md-4 border">
                             <div class="card-body text-center">
                                 <!-- .user-avatar -->
                                 <a href="user-profile.html" class="user-avatar user-avatar-floated user-avatar-xl">
@@ -105,7 +110,7 @@
                                 </a>
                                 <!-- /.user-avatar -->
                                 <h3 class="card-title mb-2">
-                                    <a href="user-profile.html">@Model.FullName</a>
+                                    @* <a href="user-profile.html">@Model.FullName</a> *@
                                 </h3>
                                 <h6 class="card-subtitle text-muted mb-3">@Model.Email</h6>
                                 <!-- grid row -->
@@ -114,10 +119,9 @@
                                     <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12">
                                         <!-- .metric -->
                                         <div class="metric">
-                                            <h6 class="metric-value"> 54 </h6>
-                                            <p class="metric-label"> Total Goals </p>
+                                           
                                         </div>
-                                        <!-- /.metric -->
+                                        <!-- /.metric --> 
                                     </div>
                                     <!-- /grid column -->
                                     <!-- grid column -->
@@ -146,11 +150,94 @@
                     </div>
                 </div>
             </form>
-                <div>
-                    <a asp-action="Index" class="btn btn-dark"><i class="fas fa-arrow-circle-left"></i>&nbsp;Back to List</a>
-                    <a asp-action="DeletePlayerRecord" asp-route-id="@Model.PlayerId" class="btn btn-danger"><i class="far fa-times-circle"></i>&nbsp;Delete</a>
-                    <a asp-action="EditPlayerRecord" class="btn btn-success" asp-route-id="@Model?.PlayerId"><i class="far fa-edit"></i>&nbsp;Edit</a>
+            <div class="row col-12 col-md-12">
+                <div class="col-md-6">
+                    <div b-excgvkapwk="">
+                        <div b-excgvkapwk="" class="card">
+                            <h5 b-excgvkapwk="" class="card-header">Player Documents Listing</h5>
+                            <div b-excgvkapwk="" class="card-body p-0">
+                                <div b-excgvkapwk="" class="table-responsive">
+                                    <table b-excgvkapwk="" class="table">
+                                        <thead b-excgvkapwk="" class="bg-light">
+                                            <tr b-excgvkapwk="" class="border-0">
+                                                <th b-excgvkapwk="" class="border-0">Document Name</th>
+                                                <th b-excgvkapwk="" class="border-0">Document Type</th>
+                                                <th b-excgvkapwk="" class="border-0">Actions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody b-excgvkapwk="">
+                                        <tbody b-excgvkapwk="">
+                                                @foreach (var doc in Model.PlayerDocument)
+                                                {
+                                                <tr b-excgvkapwk="">
+                                                    <td b-excgvkapwk="">
+                                                        <a asp-controller="TeamOfficials" asp-route-id="" asp-action="TeamOfficialsDetails">
+                                                                @doc.DocumentName
+                                                        </a>
+                                                    </td>
+                                                    <td b-excgvkapwk="">
+                                                            @doc.DocumentType
+                                                    </td>
+                                                    <td>
+                                                        <a asp-controller="PlayerDocuments"  asp-action="DownloadPlayerDocument" asp-route-documentName="@doc.DocumentName" class="text-primary">Download</a>
+                                                    </td>
+                                                </tr>
+                                                }
+                                            <tr b-excgvkapwk="">
+                                                <td b-excgvkapwk="" colspan="9"><a b-excgvkapwk="" href="#" class="btn btn-outline-light float-right">View Historical Players</a></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+                <div class="col-md-6">
+                    <div b-excgvkapwk="">
+                        <div b-excgvkapwk="" class="card">
+                            <h5 b-excgvkapwk="" class="card-header">Tournament Stats Record</h5>
+                            <div b-excgvkapwk="" class="card-body p-0">
+                                <div b-excgvkapwk="" class="table-responsive">
+                                    <table b-excgvkapwk="" class="table">
+                                        <thead b-excgvkapwk="" class="bg-light">
+                                            <tr b-excgvkapwk="" class="border-0">
+                                                <th b-excgvkapwk="" class="border-0">Match</th>
+                                                <th b-excgvkapwk="" class="border-0">Goals</th>
+                                                <th b-excgvkapwk="" class="border-0">Passes</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody b-excgvkapwk="">
+                                        <tbody b-excgvkapwk="">
+                                                @foreach (var doc in Model.PlayerStatistics)
+                                                {
+                                                <tr b-excgvkapwk="">
+                                                    <td b-excgvkapwk="">
+                                                        <a asp-controller="TeamOfficials" asp-route-id="" asp-action="TeamOfficialsDetails">
+                                                                @doc.MatchId
+                                                        </a>
+                                                    </td>
+                                                    <td b-excgvkapwk="">
+                                                        <a asp-controller="TeamOfficials" asp-route-id="" asp-action="TeamOfficialsDetails">
+                                                                @doc.Goals
+                                                        </a>
+                                                    </td>
+                                                    <td b-excgvkapwk="">
+                                                            @doc.PassesCompleted
+                                                    </td>
+                                                </tr>
+                                                }
+                                            <tr b-excgvkapwk="">
+                                                <td b-excgvkapwk="" colspan="9"><a b-excgvkapwk="" href="#" class="btn btn-outline-light float-right">View Historical Players</a></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>

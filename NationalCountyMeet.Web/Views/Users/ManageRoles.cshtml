@@ -1,0 +1,41 @@
+﻿@using NationalCountyMeet.Web.Models.ViewModels
+@model List<ManageUserRolesViewModel>
+
+@{
+    ViewData["Title"] = "Manage User Roles";
+    Layout = "_SubLayout";
+}
+
+<div class="card">
+    <div class="container-fluid dashboard-content">
+        <div class="row">
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 p-3 ml-3">
+                <h2 class="text-primary mb-3">Add / remove <span class="text-danger">@ViewBag.UserName</span> from role</h2>
+                <form asp-action="ManageRoles">
+                    <input type="hidden" name="userId" value="@ViewBag.UserId" />
+                    <div class="row">
+                        <div class="col-md-6">
+                            @for (int i = 0; i < Model.Count; i++)
+                            {
+                                <div>
+                                    <input type="hidden" asp-for="@Model[i].RoleName" class="form-check-input" />
+                                    <input type="hidden" asp-for="@Model[i].RoleName" class="form-check-input" />
+                                    <input asp-for="@Model[i].IsSelected" class="form-check-input" />
+                                    <label asp-for="@Model[i].IsSelected" class="form-check-label">
+                                        @Model[i].RoleName
+                                    </label>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                    <div class="row -col-12 p-3">
+                        <div class="btn-group" role="group" aria-label="Basic example">
+                            <a asp-controller="Users" asp-route-id="@ViewBag.UserId" asp-action="UserDetails" class="btn btn-warning"><i class="fas fa-arrow-circle-left"></i>&nbsp;Cancel</a>
+                            <button type="submit" class="btn btn-primary"><i class="fas fa-plus-circle"></i>&nbsp;Add</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

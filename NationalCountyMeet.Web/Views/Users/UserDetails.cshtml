@@ -1,0 +1,135 @@
+﻿@using NationalCountyMeet.Web.Models.Others
+@model NationalCountyMeet.Web.Models.ViewModels.UserDetailsVM
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "_SubLayout";
+    int Counter = 1;
+}
+
+<div class="card">
+    <div class="container-fluid dashboard-content">
+        <div class="row">
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                <h2 class="text-primary mb-3">
+                    @String.Format("{0}", Model.FullName) record
+                </h2>
+                <div class="mb-3">
+                    <form asp-action="DeleteUserConfirmation">
+                        <input type="hidden" asp-for="Id" />
+                        <a accesskey="Users" asp-action="UsersList" class="btn btn-sm btn-dark"><i class="fas fa-arrow-circle-left"></i>&nbsp;Back to List</a>
+                        <a asp-action="ManageRoles" asp-route-userId="@Model.Id" class="btn btn-sm btn-warning">Manage Roles</a>
+                        <button type="submit" class="btn btn-sm btn-danger"><i class="far fa-times-circle"></i>&nbsp;Delete</button>
+                        <a asp-action="EditUser" class="btn btn-sm btn-success" asp-route-id="@Model?.Id"><i class="far fa-edit"></i>&nbsp;Edit</a>
+                    </form>
+                </div>
+                <div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <dl class="row">
+                                <dt class="col-sm-4">
+                                    @Html.DisplayNameFor(model => model.FullName)
+                                </dt>
+                                <dd class="col-sm-8">
+                                    @Html.DisplayFor(model => model.FullName)
+                                </dd>
+                                <dt class="col-sm-4">
+                                    @Html.DisplayNameFor(model => model.Gender)
+                                </dt>
+                                <dd class="col-sm-8">
+                                    @Html.DisplayFor(model => model.Gender)
+                                </dd>
+                                <dt class="col-sm-4">
+                                    @Html.DisplayNameFor(model => model.Contact)
+                                </dt>
+                                <dd class="col-sm-8">
+                                    @Html.DisplayFor(model => model.Contact)
+                                </dd>
+                                <dt class="col-sm-4">
+                                    @Html.DisplayNameFor(model => model.Email)
+                                </dt>
+                                <dd class="col-sm-8">
+                                    @Html.DisplayFor(model => model.Email)
+                                </dd>
+                            </dl>
+                        </div>
+                        <div class="col-md-6 border">
+                            <div class="card-body text-center">
+                                <!-- .user-avatar -->
+                                <a href="user-profile.html" class="user-avatar user-avatar-floated user-avatar-xl">
+                                    @* <img src="@Model.CountyFlagPhotoUrl" alt="User Avatar" class="rounded-circle user-avatar-xl"> *@
+                                    <img src="" alt="User Avatar" class="rounded-circle user-avatar-xl">
+                                </a>
+                                <!-- /.user-avatar -->
+                                <h3 class="card-title mb-2">
+                                    <a href="user-profile.html">NAME</a>
+                                </h3>
+                                <h6 class="card-subtitle text-muted mb-3">Email</h6>
+                                <!-- grid row -->
+                                <div class="row">
+                                    <!-- grid column -->
+                                    <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12">
+                                        <!-- .metric -->
+                                        <div class="metric">
+                                            <h6 class="metric-value"> 54 </h6>
+                                            <p class="metric-label"> Total Goals </p>
+                                        </div>
+                                        <!-- /.metric -->
+                                    </div>
+                                    <!-- /grid column -->
+                                    <!-- grid column -->
+                                    <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12">
+                                        <!-- .metric -->
+                                        <div class="metric">
+                                            <h6 class="metric-value"> 53 </h6>
+                                            <p class="metric-label"> Total Assists </p>
+                                        </div>
+                                        <!-- /.metric -->
+                                    </div>
+                                    <!-- /grid column -->
+                                    <!-- grid column -->
+                                    <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12">
+                                        <!-- .metric -->
+                                        <div class="metric">
+                                            <h6 class="metric-value"> 2 </h6>
+                                            <p class="metric-label"> Games Played </p>
+                                        </div>
+                                        <!-- /.metric -->
+                                    </div>
+                                    <!-- /grid column -->
+                                </div>
+                                <!-- /grid row -->
+                            </div>
+                        </div>
+                    </div>
+                </div>     
+                <div class="col-md-6 border">                   
+                    <table b-excgvkapwk="" class="table">
+                        <h5>User Roles</h5>
+                        <thead b-excgvkapwk="" class="bg-light">
+                            <tr b-excgvkapwk="" class="border-0">
+                                <th b-excgvkapwk="" class="border-0">No.</th>
+                                <th b-excgvkapwk="" class="border-0">Role</th>
+                            </tr>
+                        </thead>
+                        <tbody b-excgvkapwk="">
+                            @if (Model.Roles.Any())
+                            {
+                                @foreach (var roles in Model.Roles)
+                                {
+                                    <tr b-excgvkapwk="">
+                                        <td>
+                                            @String.Format("{0}", Counter++)
+                                        </td>
+                                        <td b-excgvkapwk="">
+                                            @roles
+                                        </td>
+                                    </tr>
+                                }
+                            }                        
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

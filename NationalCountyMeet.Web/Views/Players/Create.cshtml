@@ -36,15 +36,15 @@
                 <div class="col-md-4">
                     <div class="form-group">
                         <label asp-for="DateOfBirth" class="control-label"></label>
-                        <input asp-for="DateOfBirth" class="form-control" />
+                        <input asp-for="DateOfBirth" class="form-control"  />
                         <span asp-validation-for="DateOfBirth" class="text-danger"></span>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="form-group">
-                        <label asp-for="PlayerCountyID" class="control-label"></label>
-                        <select asp-for="PlayerCountyID" asp-items="ViewBag.PlayerCountyID" class="form-control"></select>
-                        <span asp-validation-for="PlayerCountyID" class="text-danger"></span>
+                        <label asp-for="CountyOfOriginCountyId" class="control-label"></label>
+                        <select asp-for="CountyOfOriginCountyId" asp-items="ViewBag.CountyOfOriginCountyId" class="form-control"></select>
+                        <span asp-validation-for="CountyOfOriginCountyId" class="text-danger"></span>
                     </div>
                 </div>
                 <div class="col-md-4">
@@ -65,6 +65,13 @@
                         <label asp-for="Contact" class="control-label"></label>
                         <input asp-for="Contact" class="form-control" />
                         <span asp-validation-for="Contact" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="HomeContact" class="control-label"></label>
+                        <input asp-for="HomeContact" class="form-control" />
+                        <span asp-validation-for="HomeContact" class="text-danger"></span>
                     </div>
                 </div>
                 <div class="col-md-4">
@@ -99,12 +106,22 @@
                         <select asp-for="Ethnicity" class="form-control" asp-items="@Html.GetEnumSelectList<Ethnicity>()"></select>
                         <span asp-validation-for="Ethnicity" class=" text-danger"></span>
                     </div>
-                </div>
-                <div class="col-md-4">
+                </div>    
+                <div class="col-md-4"></div>
+                <div class="col-md-3">
                     <div class="form-group">
-                        <label asp-for="PlayerPhoto" class="control-label"></label>
-                        <input asp-for="PlayerPhoto" class="form-control" />
+                        @* <label asp-for="PlayerPhoto" class="control-label"></label> *@
+                        <p></p>
+                        <img id="playerImagePrv" src="~/images/default.jpg" width="230" height="160" />
+                        <input asp-for="PlayerPhoto" class="form-control" style="width: 230px;"
+                               onchange="document.getElementById('playerImagePrv').src = window.URL.createObjectURL(this.files[0])" />
                         <span asp-validation-for="PlayerPhoto" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-8 offset-1">
+                    <div class="form-group">
+                        <label asp-for="HomeAddress" class="control-label"></label>
+                        <textarea asp-for="HomeAddress" onreset="false" style="height: 200px;" class="form-control"></textarea>
                     </div>
                 </div>
             </div>
@@ -117,5 +134,11 @@
 </div>
 
 @section Scripts {
+    <script type="text/javascript">
+        $(".custom-file-input").on("change", function(){
+            var fileName = $(this).val().split("\\").pop();
+            $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+        });
+    </script>
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }

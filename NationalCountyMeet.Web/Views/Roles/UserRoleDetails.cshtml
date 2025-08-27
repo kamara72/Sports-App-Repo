@@ -1,0 +1,71 @@
+﻿@model NationalCountyMeet.Web.Models.ViewModels.RolesViewModel
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "_SubLayout";
+    int Counter = 1;
+}
+
+<div class="card">
+    <div class="container-fluid dashboard-content">
+        <div class="row">
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                <h2 class="text-primary text-uppercase mb-3">County Details</h2>
+                <div class="row -col-12 p-3">
+                    <div class="btn-group" role="group" aria-label="Basic example">
+                        <a asp-controller="Roles" asp-action="RolesList" class="btn btn-dark"><i class="fas fa-arrow-circle-left"></i>&nbsp;Back to List</a>
+                        <a asp-controller="Roles" asp-action="DeleteUserRole" asp-route-id="@Model.RoleId" class="btn btn-danger"><i class="far fa-times-circle"></i>&nbsp;Delete</a>
+                        <a asp-controller="Roles" asp-action="EditUserRole" class="btn btn-success" asp-route-id="@Model?.RoleId"><i class="far fa-edit"></i>&nbsp;Edit</a>
+                    </div>
+                </div>
+                <form>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <dl class="row">
+                                <dt class="col-sm-4">
+                                    @Html.DisplayNameFor(model => model.RoleName)
+                                </dt>
+                                <dd class="col-sm-8">
+                                    @Html.DisplayFor(model => model.RoleName)
+                                </dd>
+                            </dl>
+                        </div>
+                        <div class="col-md-6 border">
+                            <table b-excgvkapwk="" class="table">
+                                <thead b-excgvkapwk="" class="bg-light">
+                                    <tr b-excgvkapwk="" class="border-0">
+                                        @* <th b-excgvkapwk="" class="border-0">No.</th> *@
+                                        <th b-excgvkapwk="" class="border-0"></th>
+                                        <th b-excgvkapwk="" class="border-0">Full Name</th>
+                                        <th b-excgvkapwk="" class="border-0">Age</th>
+                                        <th b-excgvkapwk="" class="border-0">Jersey No.</th>
+                                        <th b-excgvkapwk="" class="border-0">Position</th>
+                                    </tr>
+                                </thead>
+                                <tbody b-excgvkapwk="">
+                                    @if (Model.Users.Any())
+                                    {
+                                        @foreach (var users in Model.Users)
+                                        {
+                                            <tr b-excgvkapwk="">
+                                                <td b-excgvkapwk="">
+                                                    <div b-excgvkapwk="" class="m-r-10"><img b-excgvkapwk="" src="~/images/default.jpg" alt="user" class="rounded" width="35" height="35"></div>
+                                                </td>
+                                                <td b-excgvkapwk="">
+                                                    @users
+                                                </td>
+                                            </tr>
+                                        }
+                                    }
+                                    <tr b-excgvkapwk="">
+                                        <td b-excgvkapwk="" colspan="9"><a b-excgvkapwk="" href="#" class="btn btn-outline-light float-right">View Historical Players</a></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

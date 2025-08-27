@@ -3,6 +3,7 @@
 @{
     ViewData["Title"] = "Details";
     Layout = "_SubLayout";
+    int Counter = 1;
 }
 
 <div class="card">
@@ -96,11 +97,104 @@
                         </div>
                     </div>
                 </form>
-                @* <div>
-                    <a asp-action="Index" class="btn btn-dark"><i class="fas fa-arrow-circle-left"></i>&nbsp;Back to List</a>
-                    <a asp-action="DeleteCountyRecord" asp-route-id="@Model.CountyId" class="btn btn-danger"><i class="far fa-times-circle"></i>&nbsp;Delete</a>
-                    <a asp-action="EditCountyRecord" class="btn btn-success" asp-route-id="@Model?.CountyId"><i class="far fa-edit"></i>&nbsp;Edit</a>
-                </div> *@
+                <div class="row col-12 mt-3">
+                    <div class="col-8">
+                        <div b-excgvkapwk="">
+                            <div b-excgvkapwk="" class="card">
+                                <h5 b-excgvkapwk="" class="card-header">Current Player Listing</h5>
+                                <div b-excgvkapwk="" class="card-body p-0">
+                                    <div b-excgvkapwk="" class="table-responsive">
+                                        <table b-excgvkapwk="" class="table">
+                                            <thead b-excgvkapwk="" class="bg-light">
+                                                <tr b-excgvkapwk="" class="border-0">
+                                                    @* <th b-excgvkapwk="" class="border-0">No.</th> *@
+                                                    <th b-excgvkapwk="" class="border-0"></th>
+                                                    <th b-excgvkapwk="" class="border-0">Full Name</th>
+                                                    <th b-excgvkapwk="" class="border-0">Age</th>
+                                                    <th b-excgvkapwk="" class="border-0">Jersey No.</th>
+                                                    <th b-excgvkapwk="" class="border-0">Position</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody b-excgvkapwk="">
+                                                @foreach (var player in Model.Players)
+                                                {
+                                                    <tr b-excgvkapwk="">
+                                                        <td b-excgvkapwk="">
+                                                            <div b-excgvkapwk="" class="m-r-10"><img b-excgvkapwk="" src="@player.PlayerPhotoUrl" alt="user" class="rounded" width="35" height="35"></div>
+                                                        </td>
+                                                        <td b-excgvkapwk="">
+                                                            <a asp-controller="Players" asp-route-id="@player.PlayerId" asp-action="Details">
+                                                                @player.FullName
+                                                            </a>
+                                                        </td>
+                                                        <td b-excgvkapwk="">
+                                                            @player.DateOfBirth
+                                                        </td>
+                                                        <td b-excgvkapwk="">
+                                                            @player.JerseyNumber
+                                                        </td>
+                                                        <td b-excgvkapwk="">
+                                                            @player.PlayerPosition
+                                                        </td>
+                                                    </tr>
+                                                }
+                                                <tr b-excgvkapwk="">
+                                                    <td b-excgvkapwk="" colspan="9"><a b-excgvkapwk="" href="#" class="btn btn-outline-light float-right">View Historical Players</a></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 bg-black">
+                        <div b-excgvkapwk="">
+                            <div b-excgvkapwk="" class="card">
+                                <h5 b-excgvkapwk="" class="card-header">County Official Listing</h5>
+                                <div b-excgvkapwk="" class="card-body p-0">
+                                    <div b-excgvkapwk="" class="table-responsive">
+                                        <table b-excgvkapwk="" class="table">
+                                            <thead b-excgvkapwk="" class="bg-light">
+                                                <tr b-excgvkapwk="" class="border-0">
+                                                    <th b-excgvkapwk="" class="border-0"></th>
+                                                    <th b-excgvkapwk="" class="border-0">Full Name</th>
+                                                    <th b-excgvkapwk="" class="border-0">Contact</th>
+                                                    <th b-excgvkapwk="" class="border-0">Position</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody b-excgvkapwk="">
+                                            <tbody b-excgvkapwk="">
+                                                    @foreach (var official in Model.TeamOfficial)
+                                                    {
+                                                    <tr b-excgvkapwk="">
+                                                        <td b-excgvkapwk="">
+                                                            <div b-excgvkapwk="" class="m-r-10"><img b-excgvkapwk="" src="@official.TeamOfficialPhotoUrl" alt="user" class="rounded" width="35" height="35"></div>
+                                                        </td>
+                                                        <td b-excgvkapwk="">
+                                                            <a asp-controller="TeamOfficials" asp-route-id="@official.TeamOfficialId" asp-action="TeamOfficialsDetails">
+                                                                 @official.FullName
+                                                            </a>
+                                                        </td>
+                                                        <td b-excgvkapwk="">
+                                                            @official.Contact
+                                                        </td>
+                                                        <td b-excgvkapwk="">
+                                                                @official.Official
+                                                        </td>
+                                                    </tr>
+                                                    }
+                                                <tr b-excgvkapwk="">
+                                                    <td b-excgvkapwk="" colspan="9"><a b-excgvkapwk="" href="#" class="btn btn-outline-light float-right">View Historical Players</a></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

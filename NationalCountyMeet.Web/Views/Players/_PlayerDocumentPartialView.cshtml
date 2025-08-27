@@ -1,0 +1,29 @@
+﻿@using NationalCountyMeet.Web.Models.Others
+@model NationalCountyMeet.Web.Models.ViewModels.PlayerDocumentVM
+
+
+<form asp-action="AddOrEdit" onsubmit="return submitForm(this);">
+    <input type="hidden" asp-for="PlayerId" />
+    <div class="mb-3">
+        <label asp-for="Files" class="form-label"></label>
+        <input asp-for="Files" class="form-control" />
+        <span asp-validation-for="Files" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="DocumentType" class="form-label"></label>
+        <input asp-for="DocumentType" class="form-control" />
+        <span asp-validation-for="DocumentType" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Description" class="form-label"></label>
+        <input asp-for="Description" class="form-control" />
+        <span asp-validation-for="Description" class="text-danger"></span>
+    </div>
+    <div class="text-end">
+        <button type="submit" class="btn btn-success">Save</button>
+    </div>
+</form>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
